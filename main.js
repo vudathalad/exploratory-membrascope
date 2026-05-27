@@ -85,7 +85,7 @@ function setup() {
     count.innerText = lipids.length;
   }*/
 
-  const r = height * 0.6;
+  const r = height * 0.3;
   const bilayerCount = 500;
   for (let i = 0; i < bilayerCount; i++) {
     let angle = (i / bilayerCount) * Math.PI * 2;
