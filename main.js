@@ -68,7 +68,7 @@ function setup() {
   let canvas = createCanvas(window.innerWidth, window.innerHeight);
   canvas.parent('simContainer');
 
-  let aquaporin = new Aquaporin(width / 2, height / 2);
+  /*let aquaporin = new Aquaporin(width / 2, height / 2);
   aquaporin.angle = radians(270);
   aquaporins.push(aquaporin);
 
@@ -83,29 +83,26 @@ function setup() {
     lipid.angle = radians(0);
     lipids.push(lipid);
     count.innerText = lipids.length;
-  }
-
-  /*const r = height * 0.2;
-  const bilayerCount = 200;
-  for (let j = -1; j <= 1; j += 2) {
-    console.log(j);
-    for (let i = 0; i < bilayerCount; i++) {
-      let angle = (i / bilayerCount) * Math.PI * 2;
-      let outerLipid = new Lipid(
-        Math.cos(angle) * r + width / 2 + j * 300,
-        Math.sin(angle) * r + height / 2
-      );
-      outerLipid.angle = angle;
-      lipids.push(outerLipid);
-
-      let innerLipid = new Lipid(
-        Math.cos(angle) * (r - 20) + width / 2 + j * 300,
-        Math.sin(angle) * (r - 20) + height / 2
-      );
-      innerLipid.angle = angle - Math.PI;
-      lipids.push(innerLipid);
-    }
   }*/
+
+  const r = height * 0.6;
+  const bilayerCount = 500;
+  for (let i = 0; i < bilayerCount; i++) {
+    let angle = (i / bilayerCount) * Math.PI * 2;
+    let outerLipid = new Lipid(
+      Math.cos(angle) * r + width / 2,
+      Math.sin(angle) * r + height / 2
+    );
+    outerLipid.angle = angle;
+    lipids.push(outerLipid);
+
+    let innerLipid = new Lipid(
+      Math.cos(angle) * (r - 20) + width / 2,
+      Math.sin(angle) * (r - 20) + height / 2
+    );
+    innerLipid.angle = angle - Math.PI;
+    lipids.push(innerLipid);
+  }
 
   count.innerText = lipids.length;
   setupWater();
