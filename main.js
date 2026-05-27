@@ -86,7 +86,7 @@ function setup() {
   }*/
 
   const r = height * 0.3;
-  const bilayerCount = 500;
+  const bilayerCount = 300;
   for (let i = 0; i < bilayerCount; i++) {
     let angle = (i / bilayerCount) * Math.PI * 2;
     let outerLipid = new Lipid(
@@ -132,7 +132,6 @@ function draw() {
   console.log(dataLog);
   console.log(lastTime);
 
-  if (frameCount - 50 === 2500) downloadCSV();
 
   transportCountSpan.innerText = transportCount;
   netFlowSpan.innerText = netFlow;
@@ -233,22 +232,4 @@ function isMouseOverUI() {
     }
   }
   return true; // mouse is over canvas
-}
-
-function downloadCSV() {
-  let csv = 'time,transportCount,netFlow,transportRate\n';
-
-  for (let row of dataLog) {
-    csv += `${row.time},${row.transportCount},${row.netFlow},${row.transportRate}\n`;
-  }
-
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = NUM_WATER + ' _ ' + width * height + '.csv';
-  a.click();
-
-  URL.revokeObjectURL(url);
 }
